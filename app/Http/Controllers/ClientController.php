@@ -9,8 +9,17 @@ class ClientController extends Controller
 {
     public function index()
     {
-        $clients = Client::paginate(10);
+        $clients = Client::withCount('reserves')->paginate(10);
         return view('clients.index', compact('clients'));
+    }
+
+    public function show(Client $client)
+    {
+        $client->load(['reserves' => function ($query) {
+            $query->with('procedure')->orderBy('start_time', 'desc');
+        }]);
+
+        return view('clients.show', compact('client'));
     }
 
     public function create()

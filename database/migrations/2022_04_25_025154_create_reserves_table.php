@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('reserves', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('client_id');
+            $table->unsignedBigInteger('procedure_id');
+            $table->timestamp('start_time');
+            $table->timestamp('end_time');
+            $table->unique(['client_id', 'start_time']);
             $table->timestamps();
         });
     }

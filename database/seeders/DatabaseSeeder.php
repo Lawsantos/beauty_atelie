@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Client;
+use App\Models\Procedure;
+use App\Models\Reserve;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -24,6 +26,11 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
-        Client::factory(100)->create();
+        if(app()->environment('local')) {
+            Client::factory(100)->create();
+            Procedure::factory(10)->create();
+            Reserve::factory(50)->create();
+        }
+
     }
 }

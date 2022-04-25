@@ -49,6 +49,9 @@
                                 <td class="px-6 py-3">{{ $reserve->end_time->format('d/m/Y H:i') }}</td>
                                 <td class="px-6 py-3">{{ $reserve->procedure->name }}</td>
                                 <td class="flex space-x-4 pt-2 mr-4">
+                                    <x-button-link color="green" href="#">
+                                        <x-icons.clipboard-check></x-icons.clipboard-check>
+                                    </x-button-link>
                                     <x-button-link href="{{ route('reserves.edit', $reserve) }}">
                                         <x-icons.edit></x-icons.edit>
                                     </x-button-link>

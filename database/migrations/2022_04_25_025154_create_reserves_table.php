@@ -20,6 +20,7 @@ return new class extends Migration
             $table->timestamp('start_time');
             $table->timestamp('end_time');
             $table->unique(['start_time', 'end_time']);
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

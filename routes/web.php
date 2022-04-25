@@ -31,3 +31,7 @@ Route::group(['prefix' => 'reserves', 'middleware' => 'auth'], function () {
     Route::delete('{reserve}', [ReserveController::class, 'destroy'])->name('reserves.destroy');
 
 });
+
+Route::get('calendar', function () {
+    return view('welcome');
+});

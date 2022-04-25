@@ -23,21 +23,15 @@
                     @foreach($clients as $client)
                         <tr>
                             <td class="px-6 py-3">
-                                <a class="hover:text-purple-600" href="{{ route('clients.edit', $client) }}">
+                                <a class="hover:text-purple-600" href="{{ route('clients.show', $client) }}">
                                     {{ $client->name }}
                                 </a>
                             </td>
                             <td class="px-6 py-3">{{ $client->phone }}</td>
                             <td class="flex space-x-3 pt-2 mr-4">
-                                @if($client->reserves_count > 0)
-                                    <x-button-link color="purple" href="{{ route('clients.show', $client) }}">
-                                        <x-icons.clock></x-icons.clock>
-                                    </x-button-link>
-                                @else
-                                    <x-button-disabled>
-                                        <x-icons.clock></x-icons.clock>
-                                    </x-button-disabled>
-                                @endif
+                                <x-button-link href="{{ route('clients.edit', $client) }}">
+                                    <x-icons.edit></x-icons.edit>
+                                </x-button-link>
                                 <form action="{{ route('clients.destroy', $client) }} " method="post" class="ml-4">
                                     @csrf
                                     @method('delete')

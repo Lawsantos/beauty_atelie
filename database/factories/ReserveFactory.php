@@ -19,8 +19,8 @@ class ReserveFactory extends Factory
      */
     public function definition()
     {
-        $time = $this->faker->dateTimeBetween('now', '+7 days')->format('Y-m-d H:i:s');
-        $startTime = Carbon::createFromFormat('Y-m-d H:i:s', $time);
+        $time = $this->faker->dateTimeBetween('now', '+7 days')->format('Y-m-d H:i');
+        $startTime = Carbon::createFromFormat('Y-m-d H:i', $time);
         return [
             'client_id' => Client::all()->random(),
             'procedure_id' => Procedure::all()->random(),

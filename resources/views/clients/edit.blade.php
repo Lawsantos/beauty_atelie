@@ -4,12 +4,18 @@
             <span class="font-semibold text-xl text-gray-600 leading-tight">Atualizar cliente:
                 <strong class="text-purple-700">{{ $client->name }}</strong>
             </span>
-            <x-button-link class="cursor-pointer" onclick="history.go(-1)">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
-                </svg>
-                Voltar
-            </x-button-link>
+            <div class="space-x-2">
+                <x-button-link class="cursor-pointer" onclick="history.go(-1)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+                    </svg>
+                    Voltar
+                </x-button-link>
+                <x-button-link color="purple" href="{{ route('reserves.create', $client) }}">
+                    <x-icons.calendar class="mr-2" />
+                    Novo agendamento
+                </x-button-link>
+            </div>
         </div>
     </x-slot>
     <div class="py-12">

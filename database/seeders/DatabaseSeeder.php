@@ -28,7 +28,9 @@ class DatabaseSeeder extends Seeder
 
         if(app()->environment('local')) {
             Client::factory(100)->create();
-            Procedure::factory(10)->create();
+            foreach (['Depilação', 'Massagem', 'Cilios', 'Manicure / pedicure', 'Maquiagem'] as $procedure) {
+                Procedure::factory()->create(['name' => $procedure]);
+            }
             Reserve::factory(50)->create();
         }
 

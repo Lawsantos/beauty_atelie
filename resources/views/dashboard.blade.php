@@ -29,8 +29,8 @@
                                         {{ $reserve->client->name }}
                                     </a>
                                 </td>
-                                <td class="px-6 py-3">{{ $reserve->start_time->format('d/m/Y H:i:s') }}</td>
-                                <td class="px-6 py-3">{{ $reserve->end_time->format('d/m/Y H:i:s') }}</td>
+                                <td class="px-6 py-3">{{ $reserve->start_time->format('d/m/Y H:i') }}</td>
+                                <td class="px-6 py-3">{{ $reserve->end_time->format('d/m/Y H:i') }}</td>
                                 <td class="px-6 py-3">{{ $reserve->procedure->name }}</td>
                             </tr>
                         @endforeach
@@ -57,8 +57,8 @@
                                         {{ $reserve->client->name }}
                                     </a>
                                 </td>
-                                <td class="px-6 py-3">{{ $reserve->start_time->format('d/m/Y H:i:s') }}</td>
-                                <td class="px-6 py-3">{{ $reserve->end_time->format('d/m/Y H:i:s') }}</td>
+                                <td class="px-6 py-3">{{ $reserve->start_time->format('d/m/Y H:i') }}</td>
+                                <td class="px-6 py-3">{{ $reserve->end_time->format('d/m/Y H:i') }}</td>
                                 <td class="px-6 py-3">{{ $reserve->procedure->name }}</td>
                             </tr>
                         @endforeach

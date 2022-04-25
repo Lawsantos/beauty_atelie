@@ -29,8 +29,14 @@ class ClientController extends Controller
 
     public function store(Request $request)
     {
-        Client::create($request->all());
-        return redirect()->route('clients.index');
+        try {
+            $client = Client::create($request->all());
+        }catch (\Exception $exception) {
+            session()->flash('message', 'Cliente já cadastrado');
+            return back()->withInput();
+        }
+
+        return redirect()->route('clients.show', $client);
     }
     public function edit(Client $client)
     {

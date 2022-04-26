@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Client;
+use App\Models\Reserve;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -25,5 +26,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Client::factory(100)->create();
+        Reserve::factory(50)->create();
     }
 }

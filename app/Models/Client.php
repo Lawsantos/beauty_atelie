@@ -13,4 +13,9 @@ class Client extends Model
         'name',
         'phone'
     ];
+
+    public function reserves()
+    {
+        return $this->hasMany(Reserve::class);
+    }
 }

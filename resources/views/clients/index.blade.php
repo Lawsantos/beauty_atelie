@@ -22,7 +22,11 @@
                         <tbody>
                             @foreach($clients as $client)
                                 <tr>
-                                    <td>{{ $client->name }}</td>
+                                    <td class="px-6 py-3">
+                                        <a class="hover:text-purple-600" href="{{ route('clients.show', $client) }}">
+                                            {{ $client->name }}
+                                        </a>
+                                    </td>
                                     <td>{{ $client->phone }}</td>
                                     <td class="flex space-x-3 pt-2">
                                         <x-button-link href="{{ route('clients.edit', $client) }}">

@@ -7,6 +7,13 @@ module.exports = {
         './resources/views/**/*.blade.php',
     ],
 
+    safelist: [
+        {
+            pattern: /(bg|text)-(.*)-(\d{1}0{1,2})/,
+            variants: ['active', 'hover', 'focus']
+        }
+    ],
+
     theme: {
         extend: {
             fontFamily: {

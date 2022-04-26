@@ -39,4 +39,10 @@ class ClientController extends Controller
         $client->delete();
         return back();
     }
+
+    public function show(Client $client)
+    {
+        $client->load('reserves');
+        return view('clients.show', compact('client'));
+    }
 }

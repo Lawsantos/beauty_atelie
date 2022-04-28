@@ -45,4 +45,5 @@ class ClientController extends Controller
         $client->load('reserves');
         return view('clients.show', compact('client'));
     }
+
 }

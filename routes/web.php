@@ -17,9 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', \App\Http\Controllers\DashboardController::class)->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
@@ -38,6 +36,6 @@ Route::group([ 'prefix' => 'reserves', 'middleware' => 'auth'],function () {
     Route::get('create/{client}', [\App\Http\Controllers\ReserveController::class,'create'])->name('reserves.create');
     Route::post('{client}', [\App\Http\Controllers\ReserveController::class, 'store'])->name('reserves.store');
     Route::get('{reserve}', [\App\Http\Controllers\ReserveController::class,'edit'])->name('reserves.edit');
-    Route::post('{reserve}', [\App\Http\Controllers\ReserveController::class, 'update'])->name('reserves.update');
+    Route::post('update/{reserve}', [\App\Http\Controllers\ReserveController::class, 'update'])->name('reserves.update');
     Route::delete('{reserve}', [\App\Http\Controllers\ReserveController::class, 'destroy'])->name('reserves.destroy');
 });

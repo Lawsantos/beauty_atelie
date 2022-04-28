@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('client_id');
             $table->timestamp('start_time');
             $table->timestamp('end_time');
-            $table->unique(['start_time', 'end_time']);
+            $table->unique(['start_time', 'end_time', 'client']);
             $table->timestamps();
         });
     }

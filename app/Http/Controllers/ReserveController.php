@@ -50,4 +50,50 @@ class ReserveController extends Controller
 
         return redirect()->route('clients.show', $client);
     }
+
+    public function edit(Reserve $reserve)
+    {
+        $reserve->load('client');
+        return view('reserves.edit', compact('reserve'));
+    }
+
+    public function update(Reserve $reserve, Request $request)
+    {
+        $startTimeData = "{$request->get('date')} {$request->get('start_time')}";
+        $endTimeData = "{$request->get('date')} {$request->get('end_time')}";
+        $startTime = Carbon::createFromFormat('Y-m-d H:i', $startTimeData);
+        $end_time =Carbon::createFromFormat('Y-m-d H:i', $endTimeData);
+
+        $existReserve = Reserve::on()
+            ->whereDate('start_time', $startTime)
+            ->whereTime('start_time', $startTime->format('H:i'))
+            ->first();
+
+        if ($existReserve) {
+            session()->flash('message', 'Horário já reservado.');
+            return back()->withInput();
+        }
+
+        try {
+            $reserve->update([
+                'start_time' => $startTime,
+                'end_time' => $end_time,
+            ]);
+
+        }catch (\Exception $exception) {
+            session()->flash('message', 'Horário já reservado.');
+            return back()->withInput();
+        }
+
+        session()->flash('message', 'Agendamento atualizado.');
+
+        return back();
+    }
+
+    public function destroy(Reserve $reserve)
+    {
+        $reserve->delete();
+        session()->flash('message', 'Agendamento removido.');
+        return back();
+    }
 }

@@ -5,7 +5,7 @@
                 <strong class="text-purple-700">{{ $client->name }}</strong>
             </span>
             <div class="space-x-2">
-                <x-button-link onclick="history.go(-1)">
+                <x-button-link href="{{ route('clients.index') }}">
                     <x-icons.arrow-left class="mr-2"></x-icons.arrow-left>
                     Voltar
                 </x-button-link>

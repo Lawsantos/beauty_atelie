@@ -63,8 +63,8 @@ class ReserveController extends Controller
 
     public function update(Reserve $reserve, Request $request)
     {
-        $startTimeData = "{$request->get('date')} {$request->get('start_time')}:00";
-        $endTimeData = "{$request->get('date')} {$request->get('end_time')}:00";
+        $startTimeData = "{$request->get('date')} {$request->get('start_time')}";
+        $endTimeData = "{$request->get('date')} {$request->get('end_time')}";
         $startTime = Carbon::createFromFormat('Y-m-d H:i', $startTimeData);
         $endTime = Carbon::createFromFormat('Y-m-d H:i', $endTimeData);
 
@@ -89,7 +89,9 @@ class ReserveController extends Controller
             return back()->withInput();
         }
 
-        return redirect()->route('clients.show', $reserve->client);
+        session()->flash('message', 'Agendamento atualizado.');
+
+        return back();
     }
 
     public function destroy(Reserve $reserve)

@@ -27,7 +27,7 @@ Route::group(['prefix' => 'reserves', 'middleware' => 'auth'], function () {
     Route::get('create/{client}', [ReserveController::class, 'create'])->name('reserves.create');
     Route::post('{client}', [ReserveController::class,'store'])->name('reserves.store');
     Route::get('{reserve}', [ReserveController::class, 'edit'])->name('reserves.edit');
-    Route::post('{reserve}', [ReserveController::class, 'update'])->name('reserves.update');
+    Route::post('update/{reserve}', [ReserveController::class, 'update'])->name('reserves.update');
     Route::delete('{reserve}', [ReserveController::class, 'destroy'])->name('reserves.destroy');
 
 });
